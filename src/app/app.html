@@ -1,73 +1,10 @@
 <div class="top-menu">
   <img class="logo" src="https://angular-academy.s3.amazonaws.com/main-logo/main-page-logo-small-hat.png">
 </div>
-
-<!-- <div>
-  {{strDate | date:'dd MMM yyyy'}}
-
-  {{curr | currency :'INR'}}
-
-  {{"Sudipta" | uppercase }}
-
-  {{"Snigdha" | lowercase }}
-</div> -->
-
-
-
 <div class="courses">
-  <div>
-    <select class="form-select form-select-sm" aria-label=".form-select-sm example" [(ngModel)]="selectedCat"
-      (change)="FnShowCat()">
-      <option value="">Select the category</option>
-      <option value="BEGINNER">BEGINNER</option>
-      <option value="INTERMEDIATE">INTERMEDIATE</option>
-      <option value="ADVANCED">ADVANCED</option>
-    </select>
-  </div>
-
-  @for(course of courseList | filterBycategory:selectedCat ;track course.id ;let first=$first;let last=$last ;let
-  even=$even;let odd=$odd)
+  @for(course of courseList;track course.id)
   {
-  <div class="course-card" [class.is-first]="first" [class.is-last]="last" [class.is-even]="even" [class.is-odd]="odd">
-    <div class="course-title">
-      {{course.description}}
-    </div>
-
-    @if(course.iconUrl)
-    {
-    <img width="300" [src]="course.iconUrl">
-    }
-    @else
-    {
-    <h4>No Image Available</h4>
-    }
-    <div class="course-description">
-      {{course.longDescription}}
-    </div>
-
-    <div class="course-category">
-      @switch(course.category)
-      {
-      @case('BEGINNER')
-      {
-      <div class="category">LEVEL 1</div>
-      }
-      @case('INTERMEDIATE')
-      {
-      <div class="category">LEVEL 2</div>
-      }
-      @case('ADVANCED')
-      {
-      <div class="category">LEVEL 3</div>
-      }
-      @default{
-      <div class="category">Unknown</div>
-      }
-      }
-    </div>
-
-    <button>View Course</button>
-  </div>
+    <course-card [dataFromParent]="course" ></course-card>
   }
   @empty{
   <h3>No Courses Available!!!</h3>
