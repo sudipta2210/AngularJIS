@@ -43,4 +43,9 @@ export class App implements OnInit,OnDestroy {
   {
     console.log(this.selectedCat);
   }
+
+  FnOnCourseSelected(event:any){
+    console.log("App Component Level: Button Clicked");
+    console.log(event);
+  }
 }
