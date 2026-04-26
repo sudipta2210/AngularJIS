@@ -1,0 +1,49 @@
+<div class="signup-container">
+  <div class="signup-card">
+    <h2>Sign Up</h2>
+    <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="emailId">Email ID</label>
+        <input
+          type="email"
+          id="emailId"
+          formControlName="emailId"
+          placeholder="Enter your email"
+          class="form-control"
+        />
+        <div class="error-message" *ngIf="signupForm.get('emailId')?.invalid && signupForm.get('emailId')?.touched">
+          <span *ngIf="signupForm.get('emailId')?.errors?.['required']">Email is required</span>
+          <span *ngIf="signupForm.get('emailId')?.errors?.['email']">Please enter a valid email</span>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input
+          type="password"
+          id="password"
+          formControlName="password"
+          placeholder="Enter your password (min 6 characters)"
+          class="form-control"
+        />
+        <div class="error-message" *ngIf="signupForm.get('password')?.invalid && signupForm.get('password')?.touched">
+          <span *ngIf="signupForm.get('password')?.errors?.['required']">Password is required</span>
+          <span *ngIf="signupForm.get('password')?.errors?.['minlength']">Password must be at least 6 characters</span>
+        </div>
+      </div>
+
+      <div class="success-message" *ngIf="successMessage()">
+        {{ successMessage() }}
+      </div>
+
+      <div class="api-error-message" *ngIf="errorMessage()">
+        {{ errorMessage() }}
+      </div>
+
+      <button type="submit" [disabled]="!signupForm.valid || isLoading()" class="submit-btn">
+        <span *ngIf="!isLoading()">Sign Up</span>
+        <span *ngIf="isLoading()">Signing Up...</span>
+      </button>
+    </form>
+  </div>
+</div>

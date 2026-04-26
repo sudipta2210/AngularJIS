@@ -1,0 +1,25 @@
+<div class="department-container">
+    <div class="department-header">
+        <h2>Admin</h2>
+    </div>
+
+    <div class="grid-view">
+        <div class="grid-header">
+            <div class="grid-cell grid-cell-header">User Name</div>
+            <div class="grid-cell grid-cell-header">Email</div>
+            <div class="grid-cell grid-cell-header">Gender</div>
+        </div>
+
+        <div class="grid-rows">
+            @for(admin of AdminUserData; track $index)
+            {
+            <div class="grid-row">
+                <div class="grid-cell">{{ admin.name }}</div>
+                <div class="grid-cell">{{ admin.email }}</div>
+                <div class="grid-cell">{{ admin.gender }}</div>
+            </div>
+            }
+
+        </div>
+    </div>
+</div>

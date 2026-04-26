@@ -1,0 +1,27 @@
+<div class="department-container">
+    <div class="department-header">
+        <h2>Departments</h2>
+    </div>
+
+    <div class="grid-view">
+        <div class="grid-header">
+            <div class="grid-cell grid-cell-header">Department Name</div>
+            <div class="grid-cell grid-cell-header">Status</div>
+        </div>
+
+        <div class="grid-rows">
+            @for(dept of departmentList; track $index)
+            {
+            <div class="grid-row">
+                <div class="grid-cell">{{ dept.deptName }}</div>
+                <div class="grid-cell">
+                    <span class="status-badge">
+                        {{ dept.status }}
+                    </span>
+                </div>
+            </div>
+            }
+
+        </div>
+    </div>
+</div>
